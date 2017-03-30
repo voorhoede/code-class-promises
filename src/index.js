@@ -13,7 +13,8 @@ const drinks = ['latte', 'cappuccino', 'espresso', 'americano', 'tea', 'chai'];
 function makeDrink () {
   getCup()
     .then(vessel => chooseDrink(vessel))
-    .then(drink => grabDrink(drink));
+    .then(drink => grabDrink(drink))
+    .catch(vessel => rejectCup(vessel))
 }
 
 function getCup (callback) {
@@ -24,6 +25,9 @@ function getCup (callback) {
     setTimeout(() => {
       resolve(randomVessel);
     }, 1000);
+    if (randomVessel === 'paper cup') {
+      reject(randomVessel);
+    }
   });
 }
 
