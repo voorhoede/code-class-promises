@@ -11,31 +11,33 @@ const vessels = ['mug', 'paper cup', 'glass'];
 const drinks = ['latte', 'cappuccino', 'espresso', 'americano', 'tea', 'chai'];
 
 function makeDrink () {
-  getCup(vessel => {
-    chooseDrink(vessel, filledVessel => {
-      grabDrink(filledVessel);
-    });
-  });
+  getCup()
+    .then((vessel) => chooseDrink(vessel))
+    .then(drink => grabDrink(drink));
 }
 
 function getCup (callback) {
   let randomVessel = vessels[ Math.floor(Math.random() * vessels.length) ];
   logOutput(`Grabbing a ${randomVessel}.\n`);
 
-  setTimeout(() => {
-    callback(randomVessel);
-  }, 1000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(randomVessel);
+    }, 1000);
+  });
 }
 
 function chooseDrink (vessel, callback) {
   let randomDrink = drinks[ Math.floor(Math.random() * drinks.length) ];
   logOutput(`Choosing ${randomDrink}.\n`);
 
-  setTimeout(() => {
-    callback(`${randomDrink} in a ${vessel}`);
-  }, 1000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`${randomDrink} in a ${vessel}`);
+    }, 1000);
+  });
 }
 
-function grabDrink (drinkResult) {
-  logOutput(`Enjoy your ${drinkResult}.\n`);
+function grabDrink (drink) {
+  logOutput(`Enjoy your ${drink}.\n`);
 }
