@@ -41,3 +41,7 @@ function chooseDrink (vessel, callback) {
 function grabDrink (drink) {
   logOutput(`Enjoy your ${drink}.\n`);
 }
+
+function rejectCup (vessel) {
+  logOutput(`But you don't want a ${vessel}\n`);
+}
