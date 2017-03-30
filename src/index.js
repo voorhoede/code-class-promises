@@ -42,6 +42,16 @@ function chooseDrink (vessel, callback) {
   });
 }
 
+function grabSugar () {
+  logOutput(`Grabbing sugar.\n`);
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('sugar');
+    }, 1500);
+  });
+}
+
 function grabDrink (drink) {
   logOutput(`Enjoy your ${drink}.\n`);
 }
