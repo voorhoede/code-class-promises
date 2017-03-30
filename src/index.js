@@ -36,6 +36,6 @@ function chooseDrink (vessel, callback) {
   }, 1000);
 }
 
-function grabDrink (drinkResult) {
-  logOutput(`Enjoy your ${drinkResult}.\n`);
+function grabDrink (drink) {
+  logOutput(`Enjoy your ${drink}.\n`);
 }
