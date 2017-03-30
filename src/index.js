@@ -12,7 +12,7 @@ const drinks = ['latte', 'cappuccino', 'espresso', 'americano', 'tea', 'chai'];
 
 function makeDrink () {
   getCup()
-    .then((vessel) => chooseDrink(vessel))
+    .then(vessel => chooseDrink(vessel))
     .then(drink => grabDrink(drink));
 }
 
