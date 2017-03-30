@@ -12,8 +12,7 @@ const drinks = ['latte', 'cappuccino', 'espresso', 'americano', 'tea', 'chai'];
 
 function makeDrink () {
   getCup()
-    .then(vessel => chooseDrink(vessel))
-    .then(() => grabSugar())
+    .then(vessel => Promise.all([chooseDrink(vessel), grabSugar()]))
     .then(drink => grabDrink(drink))
     .catch(vessel => rejectCup(vessel))
 }
