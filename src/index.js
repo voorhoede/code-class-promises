@@ -5,12 +5,37 @@ function logOutput (message) {
   output.innerHTML = `${output.innerHTML}\n${message}`;
 }
 
-startButton.addEventListener('click', () => {}, false);
+startButton.addEventListener('click', makeDrink, false);
 
-logOutput(`
-     _____  _____  _____  _______  __________  ______________
-    /  __ |/  __ |/  _  |/       |/__/  __   |/      /  __   |
-   /  /_/ /  /_/ /  //  /  /  /  /  /__   l__/  ----/__   l__/
-  /  ____/  __  |  //  /  /  /  /  /   l_   |  ----/   l_   |
- /__/   /__/ /__/_____/__/__/__/__/|_______/______/|_______/
-`);
+const vessels = ['mug', 'paper cup', 'glass'];
+const drinks = ['latte', 'cappuccino', 'espresso', 'americano', 'tea', 'chai'];
+
+function makeDrink () {
+  getCup(vessel => {
+    chooseDrink(vessel, filledVessel => {
+      grabDrink(filledVessel);
+    });
+  });
+}
+
+function getCup (callback) {
+  let randomVessel = vessels[ Math.floor(Math.random() * vessels.length) ];
+  logOutput(`Grabbing a ${randomVessel}.\n`);
+
+  setTimeout(() => {
+    callback(randomVessel);
+  }, 1000);
+}
+
+function chooseDrink (vessel, callback) {
+  let randomDrink = drinks[ Math.floor(Math.random() * drinks.length) ];
+  logOutput(`Choosing ${randomDrink}.\n`);
+
+  setTimeout(() => {
+    callback(`${randomDrink} in a ${vessel}`);
+  }, 1000);
+}
+
+function grabDrink (drinkResult) {
+  logOutput(`Enjoy your ${drinkResult}.\n`);
+}
