@@ -4,11 +4,11 @@
   "description": "## Install",
   "scripts": {
     "prestart": "mkdirp ./dist && npm run build:html",
-    "start": "parallelshell 'npm run watch' 'npm run serve'",
-    "serve": "browser-sync start --server './dist/' --files './dist/*.*' --port 7767",
-    "watch": "parallelshell 'npm run watch:html' 'npm run watch:js'",
+    "start": "parallelshell \"npm run watch\" \"npm run serve\"",
+    "serve": "browser-sync start --server \"./dist/\" --files \"./dist/*.*\" --port 7767",
+    "watch": "parallelshell \"npm run watch:html\" \"npm run watch:js\"",
     "build:html": "ncp ./src/index.html ./dist/index.html",
-    "watch:html": "chokidar './src/*.html' --command 'npm run build:html'",
+    "watch:html": "chokidar \"./src/*.html\" --command \"npm run build:html\"",
     "watch:js": "watchify --verbose --debug ./src/index.js -o ./dist/index.js -t [ babelify --presets [ es2015 ] ]"
   },
   "author": "De Voorhoede",
